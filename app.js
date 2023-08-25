@@ -17,6 +17,7 @@ app.set("view engine", 'ejs');
 
 // STATIC FILES MIDDLEWARE
 app.use(express.static('public'));
+app.use(express.json());
 
 // app.get('/', (req, res) => {
 //     res.render('index');
