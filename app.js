@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import conn from "./db.js"
 import pageRoute from "./routes/pageRoutes.js"
 import photoRoute from "./routes/photoRoute.js"
+import userRoute from "./routes/userRoute.js"
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.set("view engine", 'ejs');
 // STATIC FILES MIDDLEWARE
 app.use(express.static('public'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // app.get('/', (req, res) => {
 //     res.render('index');
@@ -31,6 +33,7 @@ app.use(express.json());
 // ROUTES
 app.use("/", pageRoute);
 app.use('/photos', photoRoute);
+app.use('/users', userRoute);
 
 app.listen(port, () => {
     console.log(`Application running on port: ${port}`);
