@@ -15,6 +15,12 @@ router
     .get(authMiddleware.authenticateToken, userController.getAllUsers);
 router
     .route('/:id')
-    .get(authMiddleware.authenticateToken, userController.getUser)
+    .get(authMiddleware.authenticateToken, userController.getUser);
+router
+    .route("/:id/follow")
+    .put(authMiddleware.authenticateToken, userController.follow);
+router
+    .route("/:id/unfollow")
+    .put(authMiddleware.authenticateToken, userController.unfollow);
 
 export default router;
